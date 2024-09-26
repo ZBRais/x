@@ -1,101 +1,101 @@
-import Image from "next/image";
+import React from "react";
+import { RiMoneyDollarBoxLine, RiNotification2Line, RiTwitterXLine } from "react-icons/ri";
+import { GoHomeFill } from "react-icons/go";
+import { IoSearch } from "react-icons/io5";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { HiOutlineUser } from "react-icons/hi2";
+import { PiBookmarkSimpleBold } from "react-icons/pi";
+import { CgMoreO } from "react-icons/cg";
+import CreatePost from "./components/CreatePost";
+import FeedCard from "./components/FeedCard";
+
+
+interface TwitterSidebarButton {
+  title: string;
+  icon: React.ReactNode;
+}
+
+const sidebarMenuItems: TwitterSidebarButton[] = [
+  {
+    title: "Home",
+    icon: <GoHomeFill />,
+  },
+  {
+    title: "Explore",
+    icon: <IoSearch />,
+  },
+  {
+    title: "Notifications",
+    icon: <RiNotification2Line />,
+  },
+  {
+    title: "Messages",
+    icon: <MdOutlineMailOutline />,
+  },
+  {
+    title: "Bookmarks",
+    icon: <PiBookmarkSimpleBold />
+  },
+  {
+    title: "Premium",
+    icon: <RiMoneyDollarBoxLine />
+  },
+  {
+    title: "Profiles",
+    icon: <HiOutlineUser />,
+  },
+  {
+    title: "More",
+    icon: <CgMoreO />
+  },
+]
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="grid grid-cols-12 h-screen w-screen px-20">
+      
+        <div className="col-span-3 ml-10">
+        {/*1st Column*/}
+          <div className="mx-1">
+            <div className="text-3xl h-fit w-fit hover:bg-gray-800 rounded-full p-4 cursor-pointer transition-all">
+              <RiTwitterXLine />
+            </div>
+            <div className="mt-1 h-full w-full text-2xl">
+              {/*Menu*/}
+              {sidebarMenuItems.map((item) => (
+                <div 
+                className="flex justify-start 
+                items-center gap-4" 
+                key={item.title}>
+                  {/* Div that wraps both the icon and the title */}
+                  <div className="flex px-4 py-2 items-center gap-4 hover:bg-gray-800 hover:font-semibold 
+                w-fit pr-4 cursor-pointer 
+                transition-all rounded-full">
+                    <span>{item.icon}</span>
+                    <span>{item.title}</span>
+                  </div>
+                </div>
+              ))}
+              <div className="w-full">
+                <button className="bg-[#1d9bf0] w-5/6 my-2 px-4 py-2 rounded-full hover:bg-sky-600">Post</button>
+              </div>
+      
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="col-span-6 border-x-[1px] border-b-0 border-gray-600 overflow-scroll">
+          <CreatePost />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+        </div>
+    
+        <div className="col-span-3">{/*3rd Column*/}</div>
+      </div>
   );
 }
