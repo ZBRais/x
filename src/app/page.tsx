@@ -6,8 +6,8 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { HiOutlineUser } from "react-icons/hi2";
 import { PiBookmarkSimpleBold } from "react-icons/pi";
 import { CgMoreO } from "react-icons/cg";
-import CreatePost from "./components/CreatePost";
-import FeedCard from "./components/FeedCard";
+import CreatePost from "../components/CreatePostCard";
+import FeedCard from "../components/FeedCard";
 
 
 interface TwitterSidebarButton {
