@@ -1,101 +1,39 @@
-import React from "react";
-import { RiMoneyDollarBoxLine, RiNotification2Line, RiTwitterXLine } from "react-icons/ri";
-import { GoHomeFill } from "react-icons/go";
-import { IoSearch } from "react-icons/io5";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { HiOutlineUser } from "react-icons/hi2";
-import { PiBookmarkSimpleBold } from "react-icons/pi";
-import { CgMoreO } from "react-icons/cg";
-import CreatePost from "../components/CreatePostCard";
-import FeedCard from "../components/FeedCard";
+'use client';
+import { signIn } from "next-auth/react";
+import { RiTwitterXLine } from "react-icons/ri";
 
-
-interface TwitterSidebarButton {
-  title: string;
-  icon: React.ReactNode;
-}
-
-const sidebarMenuItems: TwitterSidebarButton[] = [
-  {
-    title: "Home",
-    icon: <GoHomeFill />,
-  },
-  {
-    title: "Explore",
-    icon: <IoSearch />,
-  },
-  {
-    title: "Notifications",
-    icon: <RiNotification2Line />,
-  },
-  {
-    title: "Messages",
-    icon: <MdOutlineMailOutline />,
-  },
-  {
-    title: "Bookmarks",
-    icon: <PiBookmarkSimpleBold />
-  },
-  {
-    title: "Premium",
-    icon: <RiMoneyDollarBoxLine />
-  },
-  {
-    title: "Profiles",
-    icon: <HiOutlineUser />,
-  },
-  {
-    title: "More",
-    icon: <CgMoreO />
-  },
-]
-
-export default function Home() {
+export default function x(){
   return (
-      <div className="grid grid-cols-12 h-screen w-screen px-20">
-      
-        <div className="col-span-3 ml-10">
-        {/*1st Column*/}
-          <div className="mx-1">
-            <div className="text-3xl h-fit w-fit hover:bg-gray-800 rounded-full p-4 cursor-pointer transition-all">
-              <RiTwitterXLine />
+    <div className="grid grid-cols-7 m-1 h-screen w-screen">
+
+      <div className="col-span-4 p-48 text-[350px]">
+        <RiTwitterXLine />
+      </div>
+      <div className="col-span-3">
+        <div className="m-5">
+          <div className="m-5 font-extrabold text-[60px]">
+            <h1>Happening now</h1>
+          </div>
+          <div className="mt-10 mx-5 font-extrabold text-[30px]">
+            <h3>Join today.</h3>
+          </div>
+          <div className="m-5">
+            <div onClick={() => signIn('google', { callbackUrl: 'http://localhost:3000/home'})} className="flex items-center justify-center h-fit">
+              <button className="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-full text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+                <img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />
+                <span>Login with Google</span>
+              </button>
             </div>
-            <div className="mt-1 h-full w-full text-2xl">
-              {/*Menu*/}
-              {sidebarMenuItems.map((item) => (
-                <div 
-                className="flex justify-start 
-                items-center gap-4" 
-                key={item.title}>
-                  {/* Div that wraps both the icon and the title */}
-                  <div className="flex px-4 py-2 items-center gap-4 hover:bg-gray-800 hover:font-semibold 
-                w-fit pr-4 cursor-pointer 
-                transition-all rounded-full">
-                    <span>{item.icon}</span>
-                    <span>{item.title}</span>
-                  </div>
-                </div>
-              ))}
-              <div className="w-full">
-                <button className="bg-[#1d9bf0] w-5/6 my-2 px-4 py-2 rounded-full hover:bg-sky-600">Post</button>
-              </div>
-      
+            <div>
+              <button>Facebook</button>
+            </div>
+            <div className="mb-">
+              <button>Create Account</button>
             </div>
           </div>
         </div>
-        <div className="col-span-6 border-x-[1px] border-b-0 border-gray-600 overflow-scroll">
-          <CreatePost />
-          <FeedCard />
-          <FeedCard />
-          <FeedCard />
-          <FeedCard />
-          <FeedCard />
-          <FeedCard />
-          <FeedCard />
-          <FeedCard />
-        </div>
-    
-        <div className="col-span-3">{/*3rd Column*/}</div>
       </div>
-  );
+    
+    </div>
+  )
 }
